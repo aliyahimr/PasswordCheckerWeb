@@ -1,0 +1,474 @@
+/* =========================================================
+   SMART PASSWORD STRENGTH CHECKER
+   SOFT PASTEL CYBER SECURITY THEME
+========================================================= */
+
+:root{
+
+    --primary:#7c9df5;
+    --primary-light:#a5b4fc;
+
+    --success:#86efac;
+    --warning:#fde68a;
+    --danger:#fca5a5;
+
+    --background:#f8fafc;
+    --card:#ffffff;
+
+    --accent:#dbeafe;
+
+    --text:#334155;
+    --text-light:#64748b;
+
+    --shadow:
+        0 10px 30px rgba(0,0,0,0.06);
+
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f8fafc,
+            #eef2ff,
+            #eff6ff
+        );
+
+    color:var(--text);
+
+    min-height:100vh;
+
+    padding-bottom:50px;
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar{
+
+    background:white;
+
+    padding:20px 50px;
+
+    box-shadow:var(--shadow);
+
+    position:sticky;
+    top:0;
+
+    z-index:1000;
+}
+
+.logo{
+
+    font-size:1.4rem;
+    font-weight:700;
+
+    color:var(--primary);
+}
+
+/* =========================================================
+   HERO SECTION
+========================================================= */
+
+.hero{
+
+    text-align:center;
+
+    padding:70px 20px;
+}
+
+.hero h1{
+
+    font-size:3rem;
+
+    color:var(--primary);
+
+    margin-bottom:15px;
+}
+
+.hero p{
+
+    font-size:1.1rem;
+
+    color:var(--text-light);
+}
+
+/* =========================================================
+   MAIN CARD
+========================================================= */
+
+.card{
+
+    background:var(--card);
+
+    max-width:1000px;
+
+    margin:25px auto;
+
+    padding:30px;
+
+    border-radius:25px;
+
+    box-shadow:var(--shadow);
+}
+
+.card h2{
+
+    color:var(--primary);
+
+    margin-bottom:20px;
+}
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+input{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:#f1f5f9;
+
+    margin-bottom:15px;
+
+    font-size:1rem;
+}
+
+input:focus{
+
+    outline:none;
+
+    border:2px solid var(--primary);
+}
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+button{
+
+    background:var(--primary);
+
+    color:white;
+
+    border:none;
+
+    padding:12px 24px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:1rem;
+
+    transition:.3s;
+}
+
+button:hover{
+
+    background:#6487eb;
+
+    transform:translateY(-2px);
+}
+
+/* =========================================================
+   SCORE SECTION
+========================================================= */
+
+.score-container{
+
+    margin-top:25px;
+}
+
+#scoreText{
+
+    font-size:1.1rem;
+
+    font-weight:600;
+
+    margin-bottom:10px;
+}
+
+.progress{
+
+    width:100%;
+
+    height:24px;
+
+    background:#e2e8f0;
+
+    border-radius:30px;
+
+    overflow:hidden;
+}
+
+.progress-bar{
+
+    width:0%;
+
+    height:100%;
+
+    background:var(--success);
+
+    transition:width .8s ease;
+}
+
+/* =========================================================
+   RESULT BOX
+========================================================= */
+
+.result-box{
+
+    margin-top:20px;
+
+    padding:18px;
+
+    border-radius:15px;
+
+    background:#f8fafc;
+
+    font-weight:600;
+
+    text-align:center;
+}
+
+/* =========================================================
+   LISTS
+========================================================= */
+
+ul{
+
+    padding-left:20px;
+}
+
+li{
+
+    margin-bottom:10px;
+
+    color:var(--text);
+}
+
+/* =========================================================
+   CRACK TIME
+========================================================= */
+
+#crackTime{
+
+    font-size:1.4rem;
+
+    font-weight:700;
+
+    color:var(--primary);
+}
+
+/* =========================================================
+   PASSWORD GENERATOR
+========================================================= */
+
+#generatedPassword{
+
+    margin-top:20px;
+
+    background:#eef2ff;
+
+    padding:20px;
+
+    border-radius:15px;
+
+    font-size:1.1rem;
+
+    font-weight:600;
+
+    word-break:break-all;
+}
+
+/* =========================================================
+   SECURITY TIP
+========================================================= */
+
+#securityTip{
+
+    background:#ecfeff;
+
+    border-left:5px solid var(--primary);
+
+    padding:20px;
+
+    border-radius:12px;
+
+    margin-bottom:15px;
+
+    line-height:1.6;
+}
+
+/* =========================================================
+   AWARENESS GRID
+========================================================= */
+
+.awareness-grid{
+
+    max-width:1000px;
+
+    margin:30px auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+}
+
+.mini-card{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+
+    transition:.3s;
+}
+
+.mini-card:hover{
+
+    transform:translateY(-5px);
+}
+
+.mini-card h3{
+
+    margin:15px 0;
+
+    color:var(--primary);
+}
+
+.mini-card p{
+
+    color:var(--text-light);
+
+    font-size:.95rem;
+}
+
+/* =========================================================
+   POSTER
+========================================================= */
+
+.poster-card{
+
+    text-align:center;
+}
+
+.poster{
+
+    background:
+        linear-gradient(
+            135deg,
+            #dbeafe,
+            #eef2ff
+        );
+
+    padding:40px;
+
+    border-radius:25px;
+}
+
+.poster h3{
+
+    font-size:2rem;
+
+    color:var(--primary);
+
+    margin-bottom:20px;
+}
+
+.poster p{
+
+    font-size:1.05rem;
+
+    margin-bottom:12px;
+
+    font-weight:500;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+
+    margin-top:50px;
+
+    text-align:center;
+
+    color:var(--text-light);
+
+    padding:30px;
+}
+
+/* =========================================================
+   STRENGTH COLORS
+========================================================= */
+
+.weak{
+
+    background:var(--danger) !important;
+}
+
+.medium{
+
+    background:var(--warning) !important;
+}
+
+.strong{
+
+    background:var(--success) !important;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:768px){
+
+    .hero h1{
+
+        font-size:2rem;
+    }
+
+    .navbar{
+
+        padding:15px 20px;
+    }
+
+    .card{
+
+        margin:20px 15px;
+
+        padding:20px;
+    }
+
+}

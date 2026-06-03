@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Smart Password Strength Checker
+    </title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- ========================= -->
+    <!-- NAVBAR -->
+    <!-- ========================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            🔐 Password Security Hub
+        </div>
+
+    </nav>
+
+    <!-- ========================= -->
+    <!-- HERO -->
+    <!-- ========================= -->
+
+    <section class="hero">
+
+        <h1>
+            Smart Password Strength Checker
+        </h1>
+
+        <p>
+            Protect Your Digital Identity Through Strong Password Practices
+        </p>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- PASSWORD CHECKER -->
+    <!-- ========================= -->
+
+    <section class="card">
+
+        <h2>
+            Password Strength Checker
+        </h2>
+
+        <input
+            type="password"
+            id="passwordInput"
+            placeholder="Enter your password">
+
+        <button onclick="checkPassword()">
+            Analyze Password
+        </button>
+
+        <div class="score-container">
+
+            <div id="scoreText">
+                Score: 0 / 100
+            </div>
+
+            <div class="progress">
+
+                <div
+                    id="progressBar"
+                    class="progress-bar">
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="strengthResult"
+             class="result-box">
+
+            Waiting for analysis...
+
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- ATTACK ANALYSIS -->
+    <!-- ========================= -->
+
+    <section class="card">
+
+        <h2>
+            Attack Risk Analysis
+        </h2>
+
+        <ul id="riskList">
+
+            <li>
+                No analysis yet.
+            </li>
+
+        </ul>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- CRACK TIME -->
+    <!-- ========================= -->
+
+    <section class="card">
+
+        <h2>
+            Estimated Crack Time
+        </h2>
+
+        <div id="crackTime">
+
+            Not Available
+
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- IMPROVEMENT SUGGESTIONS -->
+    <!-- ========================= -->
+
+    <section class="card">
+
+        <h2>
+            Improvement Suggestions
+        </h2>
+
+        <ul id="suggestionList">
+
+            <li>
+                Suggestions will appear here.
+            </li>
+
+        </ul>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- PASSWORD GENERATOR -->
+    <!-- ========================= -->
+
+    <section class="card">
+
+        <h2>
+            Secure Password Generator
+        </h2>
+
+        <button onclick="generatePassword()">
+            Generate Secure Password
+        </button>
+
+        <div id="generatedPassword">
+
+            Click button to generate password
+
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- CYBER SECURITY TIP -->
+    <!-- ========================= -->
+
+    <section class="card">
+
+        <h2>
+            Cyber Security Awareness Tip
+        </h2>
+
+        <div id="securityTip">
+
+            {{ tip }}
+
+        </div>
+
+        <button onclick="refreshTip()">
+
+            New Tip
+
+        </button>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- AWARENESS CARDS -->
+    <!-- ========================= -->
+
+    <section class="awareness-grid">
+
+        <div class="mini-card">
+            🔐
+            <h3>Strong Passwords</h3>
+            <p>
+                Use unique passwords with
+                letters, numbers and symbols.
+            </p>
+        </div>
+
+        <div class="mini-card">
+            📱
+            <h3>MFA</h3>
+            <p>
+                Enable Multi-Factor
+                Authentication whenever possible.
+            </p>
+        </div>
+
+        <div class="mini-card">
+            ⚠️
+            <h3>Phishing</h3>
+            <p>
+                Never enter passwords through
+                suspicious links.
+            </p>
+        </div>
+
+        <div class="mini-card">
+            🛡️
+            <h3>Password Manager</h3>
+            <p>
+                Store passwords securely using
+                trusted password managers.
+            </p>
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- SECURITY POSTER -->
+    <!-- ========================= -->
+
+    <section class="card poster-card">
+
+        <h2>
+            Cyber Security Awareness Poster
+        </h2>
+
+        <div class="poster">
+
+            <h3>
+                THINK BEFORE YOU CLICK
+            </h3>
+
+            <p>
+                ✔ Use Strong Passwords
+            </p>
+
+            <p>
+                ✔ Enable MFA
+            </p>
+
+            <p>
+                ✔ Avoid Password Reuse
+            </p>
+
+            <p>
+                ✔ Protect Personal Information
+            </p>
+
+            <p>
+                ✔ Beware of Phishing Emails
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- FOOTER -->
+    <!-- ========================= -->
+
+    <footer>
+
+        CSC662 Computer Security Project
+
+        <br>
+
+        Smart Password Strength Checker
+
+    </footer>
+
+    <script
+        src="{{ url_for('static', filename='script.js') }}">
+    </script>
+
+</body>
+</html>

@@ -23,15 +23,19 @@
     <!-- ========================= -->
     <!-- NAVBAR -->
     <!-- ========================= -->
+
     <nav class="navbar">
+
         <div class="logo">
             🔐 Password Security Hub
         </div>
+
     </nav>
 
     <!-- ========================= -->
     <!-- HERO -->
     <!-- ========================= -->
+
     <section class="hero">
 
         <h1>
@@ -47,15 +51,17 @@
     <!-- ========================= -->
     <!-- PASSWORD CHECKER -->
     <!-- ========================= -->
+
     <section class="card">
 
         <h2>
             Password Strength Checker
         </h2>
 
-        <input type="password"
-               id="passwordInput"
-               placeholder="Enter your password">
+        <input
+            type="password"
+            id="passwordInput"
+            placeholder="Enter your password">
 
         <button onclick="checkPassword()">
             Analyze Password
@@ -68,13 +74,21 @@
             </div>
 
             <div class="progress">
-                <div id="progressBar" class="progress-bar"></div>
+
+                <div
+                    id="progressBar"
+                    class="progress-bar">
+                </div>
+
             </div>
 
         </div>
 
-        <div id="strengthResult" class="result-box">
+        <div id="strengthResult"
+             class="result-box">
+
             Waiting for analysis...
+
         </div>
 
     </section>
@@ -82,6 +96,7 @@
     <!-- ========================= -->
     <!-- ATTACK ANALYSIS -->
     <!-- ========================= -->
+
     <section class="card">
 
         <h2>
@@ -89,7 +104,11 @@
         </h2>
 
         <ul id="riskList">
-            <li>No analysis yet.</li>
+
+            <li>
+                No analysis yet.
+            </li>
+
         </ul>
 
     </section>
@@ -97,6 +116,7 @@
     <!-- ========================= -->
     <!-- CRACK TIME -->
     <!-- ========================= -->
+
     <section class="card">
 
         <h2>
@@ -104,13 +124,17 @@
         </h2>
 
         <div id="crackTime">
+
             Not Available
+
         </div>
 
     </section>
-  <!-- ========================= -->
-  <!-- IMPROVEMENT SUGGESTIONS -->
-  <!-- ========================= -->
+
+    <!-- ========================= -->
+    <!-- IMPROVEMENT SUGGESTIONS -->
+    <!-- ========================= -->
+
     <section class="card">
 
         <h2>
@@ -118,27 +142,33 @@
         </h2>
 
         <ul id="suggestionList">
-            <li>Suggestions will appear here.</li>
+
+            <li>
+                Suggestions will appear here.
+            </li>
+
         </ul>
 
     </section>
 
-    <!-- =================================================== -->
-    <!-- PASSWORD GENERATOR (Enhanced) - take from user input-->
-     <!-- if already strong - not display generated password -->
-    <!-- =================================================== -->
+    <!-- ========================= -->
+    <!-- PASSWORD GENERATOR -->
+    <!-- ========================= -->
+
     <section class="card">
 
         <h2>
             Secure Password Generator
         </h2>
 
-        <button onclick="checkPassword()">
-            Generate Secure Password (Based on Input)
+        <button onclick="generatePassword()">
+            Generate Secure Password
         </button>
 
         <div id="generatedPassword">
-            Enhanced password will appear here after analysis
+
+            Click button to generate password
+
         </div>
 
     </section>
@@ -146,6 +176,7 @@
     <!-- ========================= -->
     <!-- CYBER SECURITY TIP -->
     <!-- ========================= -->
+
     <section class="card">
 
         <h2>
@@ -153,10 +184,12 @@
         </h2>
 
         <div id="securityTip">
+
             {{ tip }}
+
         </div>
 
-         <button onclick="refreshTip()">
+        <button onclick="refreshTip()">
 
             New Tip
 
@@ -164,7 +197,7 @@
 
     </section>
 
-   <!-- ========================= -->
+    <!-- ========================= -->
     <!-- AWARENESS CARDS -->
     <!-- ========================= -->
 
@@ -208,10 +241,10 @@
 
     </section>
 
-
     <!-- ========================= -->
     <!-- SECURITY POSTER -->
     <!-- ========================= -->
+
     <section class="card poster-card">
 
         <h2>
@@ -224,11 +257,25 @@
                 THINK BEFORE YOU CLICK
             </h3>
 
-            <p>✔ Use Strong Passwords</p>
-            <p>✔ Enable MFA</p>
-            <p>✔ Avoid Password Reuse</p>
-            <p>✔ Protect Personal Information</p>
-            <p>✔ Beware of Phishing Emails</p>
+            <p>
+                ✔ Use Strong Passwords
+            </p>
+
+            <p>
+                ✔ Enable MFA
+            </p>
+
+            <p>
+                ✔ Avoid Password Reuse
+            </p>
+
+            <p>
+                ✔ Protect Personal Information
+            </p>
+
+            <p>
+                ✔ Beware of Phishing Emails
+            </p>
 
         </div>
 
@@ -237,6 +284,7 @@
     <!-- ========================= -->
     <!-- FOOTER -->
     <!-- ========================= -->
+
     <footer>
 
         CSC662 Computer Security Project
@@ -247,7 +295,9 @@
 
     </footer>
 
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script
+        src="{{ url_for('static', filename='script.js') }}">
+    </script>
 
 </body>
 </html>

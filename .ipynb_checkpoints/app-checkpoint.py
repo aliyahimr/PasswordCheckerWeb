@@ -5,9 +5,9 @@ import string
 
 app = Flask(__name__)
 
-# ==========================================
-# CYBER SECURITY AWARENESS TIPS
-# ==========================================
+# =========================
+# TIPS
+# =========================
 
 AWARENESS_TIPS = [
     "Never reuse the same password across multiple accounts.",
@@ -20,35 +20,20 @@ AWARENESS_TIPS = [
 ]
 
 
-# ==========================================
-# COMMON WEAK PASSWORDS
-# ==========================================
-
-COMMON = [
-    "123456",
-    "password",
-    "password123",
-    "qwerty",
-    "abc123",
-    "111111",
-    "admin",
-    "welcome",
-    "letmein"
-]
-
-
 # =========================
-# PAWSSWORD GENERATOR- ENHANCE PASSWORD
+# COMMON PASSWORDS
 # =========================
 
-import random
-import re
-import string
+COMMON = ["123456", "password", "password123", "qwerty", "abc123", "111111"]
+
+# =========================
+# ENHANCE PASSWORD
+# =========================
 
 def enhance(password):
+
     p = password
 
-    # 1. Leetspeak mapping
     map_char = {
         "a": "@", "i": "!", "o": "0",
         "s": "$", "e": "3", "l": "1", "t": "7"
@@ -58,31 +43,16 @@ def enhance(password):
         p = p.replace(k, v)
         p = p.replace(k.upper(), v)
 
-    # 2. Pastikan huruf pertama adalah Huruf Besar (jika ada huruf)
     if len(p) > 0:
         p = p[0].upper() + p[1:]
 
-    # 3. Pastikan ada nombor
     if not re.search(r'\d', p):
         p += str(random.randint(10, 99))
 
-    # 4. Pastikan ada special character
     if not re.search(r'[!@#$%^&*]', p):
         p += random.choice("!@#$%^&*")
 
-    # 5. ENHANCEMENT BARU: Jika panjang password kurang dari 12
-    #  tambah karakter rawak (gabungan huruf besar, kecil, nombor) sampai cukup 12
-    if len(p) < 12:
-        panjang_diperlukan = 12 - len(p)
-        
-        #  (huruf besar, kecil, dan nombor)
-        karakter_tambahan = string.ascii_letters + string.digits
-        
-        # karakter secara rawak sehinggakan cukup panjang 12
-        p += ''.join(random.choice(karakter_tambahan) for _ in range(panjang_diperlukan))
-
     return p
-
 
 # =========================
 # ANALYZE
@@ -92,45 +62,37 @@ def analyze(password):
 
     score = 0
     suggestions = []
-    
-    # Length
+
     if len(password) >= 12:
         score += 25
     elif len(password) >= 8:
         score += 15
     else:
         suggestions.append("Use at least 12 characters.")
-    
-    # Uppercase
+
     if re.search(r'[A-Z]', password):
         score += 15
     else:
         suggestions.append("Add uppercase letters.")
-    
-    # Lowercase
+
     if re.search(r'[a-z]', password):
         score += 15
     else:
         suggestions.append("Add lowercase letters.")
 
-    # Numbers
     if re.search(r'\d', password):
         score += 15
     else:
         suggestions.append("Add numbers.")
 
-     # Special Characters
     if re.search(r'[!@#$%^&*]', password):
         score += 15
     else:
         suggestions.append("Add special characters.")
 
-    # Common Password Check
     if password.lower() in COMMON:
         score -= 20
         suggestions.append("Avoid common passwords.")
-
-     # Classification
 
     if score < 40:
         strength = "Weak"
@@ -139,61 +101,41 @@ def analyze(password):
     else:
         strength = "Strong"
 
-      # Risk Analysis
     risks = (
         ["Brute Force", "Dictionary Attack"] if strength == "Weak"
         else ["Brute Force"] if strength == "Medium"
         else ["Low Risk"]
     )
 
-     # Crack Time Estimation
-
     if score <= 20:
         crack = "Instantly"
     elif score <= 40:
-        crack = "Few Minutes"
+        crack = "Minutes"
     elif score <= 60:
-        crack = " Several Days"
+        crack = "Days"
     elif score <= 80:
-        crack = "Several Months"
+        crack = "Months"
     else:
-        crack = "Hundreds of Years"
-
-# =========================
-# CLASSIFICATION & COLOR
-# =========================
-    if score < 40:
-        strength = "Weak"
-        color = "danger"   
-    elif score < 75:
-        strength = "Medium"
-        color = "warning"  
-    else:
-        strength = "Strong"
-        color = "success"  
+        crack = "Years"
 
     return {
         "score": max(0, score),
         "strength": strength,
-        "color": color,
         "risks": risks,
         "suggestions": suggestions,
         "crack_time": crack,
         "recommended": enhance(password) if strength != "Strong" else ""
     }
 
-
 # =========================
-# HOME PAGE
+# ROUTES
 # =========================
 
 @app.route("/")
 def home():
-    return render_template("index.html", tip=random.choice(AWARENESS_TIPS))
+    return render_template("index.html", tip=random.choice(TIPS))
 
-# ==========================================
-# ANALYZE PASSWORD
-# ==========================================
+
 @app.route("/analyze", methods=["POST"])
 def analyze_route():
 
@@ -201,19 +143,12 @@ def analyze_route():
     password = data.get("password", "")
 
     return jsonify(analyze(password))
-# ==========================================
-# REFRESH SECURITY TIP
-# ==========================================
+
 
 @app.route("/tip")
-def get_tip():
+def tip():
+    return jsonify({"tip": random.choice(TIPS)})
 
-    return jsonify({
-        "tip": random.choice(AWARENESS_TIPS)
-    })
-# ==========================================
-# RUN APPLICATION
-# ==========================================
 
 if __name__ == "__main__":
     app.run(debug=True)

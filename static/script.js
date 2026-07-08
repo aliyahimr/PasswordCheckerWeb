@@ -6,233 +6,141 @@
 /* =========================================================
    PASSWORD ANALYSIS
 ========================================================= */
+function checkPassword() {
+    const password = document.getElementById("passwordInput").value;
 
-async function checkPassword() {
-
-    const password =
-        document.getElementById("passwordInput").value;
-
-    if(password.trim() === ""){
-
-        alert("Please enter a password.");
-
+    // safety check
+    if (!password) {
+        alert("Please enter a password first!");
         return;
     }
 
-    try{
-
-        const response =
-            await fetch("/analyze",{
-
-                method:"POST",
-
-                headers:{
-                    "Content-Type":"application/json"
-                },
-
-                body:JSON.stringify({
-                    password:password
-                })
-
-            });
-
-        const data = await response.json();
-
-        updateResults(data);
-
-    }
-
-    catch(error){
-
-        console.error(error);
-
-        alert("Error analyzing password.");
-    }
-
-}
-
+    fetch("/analyze", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ password: password })
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log("SERVER RESPONSE:", data);
 
 /* =========================================================
    UPDATE UI
 ========================================================= */
 
-function updateResults(data){
+        // =========================
+        // SCORE
+        // =========================
+        document.getElementById("scoreText").innerText = "Score: " + data.score + " / 100";
 
-    /* =========================
-       SCORE
-    ========================= */
-
-    document.getElementById("scoreText").innerHTML =
-        `Score: ${data.score} / 100`;
-
-    const progressBar =
-        document.getElementById("progressBar");
-
-    progressBar.style.width =
+        // progress bar
+        document.getElementById("progressBar").style.width = data.score + "%";
+         progressBar.style.width =
         `${data.score}%`;
 
-    progressBar.classList.remove(
-        "weak",
-        "medium",
-        "strong"
-    );
+        progressBar.classList.remove(
+            "weak",
+            "medium",
+            "strong"
+        );
 
-    if(data.strength === "Weak"){
+        if(data.strength === "Weak"){
 
-        progressBar.classList.add("weak");
+            progressBar.classList.add("weak");
 
-    }
+        }
 
-    else if(data.strength === "Medium"){
+        else if(data.strength === "Medium"){
 
-        progressBar.classList.add("medium");
+            progressBar.classList.add("medium");
 
-    }
+        }
 
-    else{
+        else{
 
-        progressBar.classList.add("strong");
+            progressBar.classList.add("strong");
 
-    }
-
-
-    /* =========================
-       STRENGTH RESULT
-    ========================= */
-
-    document.getElementById("strengthResult")
-        .innerHTML =
-
-        `
-        <h3>Password Strength</h3>
-        <p><strong>${data.strength}</strong></p>
-        `;
+        }
 
 
-    /* =========================
-       RISK ANALYSIS
-    ========================= */
+        // =========================
+        // STRENGTH
+        // =========================
+        document.getElementById("strengthResult").innerText = "Strength: " + data.strength;
 
-    const riskList =
-        document.getElementById("riskList");
+        // =========================
+        // CRACK TIME
+        // =========================
+        document.getElementById("crackTime").innerText = data.crack_time;
 
-    riskList.innerHTML = "";
+        // =========================
+        // RISKS
+        // =========================
+        let riskHTML = "";
+        if (data.risks && data.risks.length > 0) {
+            data.risks.forEach(r => {
+                riskHTML += "<li>" + r + "</li>";
+            });
+        } else {
+            riskHTML = "<li>No risk detected</li>";
+        }
+        document.getElementById("riskList").innerHTML = riskHTML;
 
-    data.risks.forEach(risk => {
+        // =========================
+        // SUGGESTIONS
+        // =========================
+        let sugHTML = "";
+        if (data.suggestions && data.suggestions.length > 0) {
+            data.suggestions.forEach(s => {
+                sugHTML += "<li>" + s + "</li>";
+            });
+        } else {
+            sugHTML = "<li>Password is strong 👍</li>";
+        }
+        document.getElementById("suggestionList").innerHTML = sugHTML;
 
-        const li =
-            document.createElement("li");
-
-        li.textContent = risk;
-
-        riskList.appendChild(li);
-
+        // =========================
+        // PASSWORD GENERATOR- ENHANCED PASSWORD 
+        // =========================
+        document.getElementById("generatedPassword").innerText =
+            data.recommended
+            ? "Enhanced Password: " + data.recommended
+            : "No enhancement needed (Strong Password)";
+    })
+    .catch(error => {
+        console.error("ERROR:", error);
+        alert("Something went wrong. Check console (F12).");
     });
-
-
-    /* =========================
-       CRACK TIME
-    ========================= */
-
-    document.getElementById("crackTime")
-        .innerHTML = data.crack_time;
-
-
-    /* =========================
-       SUGGESTIONS
-    ========================= */
-
-    const suggestionList =
-        document.getElementById("suggestionList");
-
-    suggestionList.innerHTML = "";
-
-    if(data.suggestions.length === 0){
-
-        suggestionList.innerHTML =
-            "<li>Excellent password. No improvements needed.</li>";
-
-    }
-
-    else{
-
-        data.suggestions.forEach(item => {
-
-            const li =
-                document.createElement("li");
-
-            li.textContent = item;
-
-            suggestionList.appendChild(li);
-
-        });
-
-    }
-
 }
-
 
 /* =========================================================
-   PASSWORD GENERATOR
-========================================================= */
+   REFRESH SECURITY TIP 
+   ========================================================= */
+async function refreshTip() {
+    try {
+        // Tambah timestamp rawak (?_=${new Date().getTime()}) supaya browser tak simpan cache tip lama
+        const response = await fetch(`/tip?_=${new Date().getTime()}`);
+        
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
 
-async function generatePassword(){
+        const resData = await response.json();
+        console.log("NEW TIP RECEIVED:", resData.tip);
 
-    try{
+    
+        const tipElement = document.getElementById("securityTip");
+        if (tipElement) {
+            tipElement.innerText = resData.tip;
+        }
 
-        const response =
-            await fetch("/generate");
-
-        const data =
-            await response.json();
-
-        document.getElementById(
-            "generatedPassword"
-        ).innerHTML =
-
-        `
-        <strong>${data.password}</strong>
-        `;
-
+    } catch (error) {
+        console.error("Error fetching new tip:", error);
     }
-
-    catch(error){
-
-        console.error(error);
-
-    }
-
 }
 
-
-/* =========================================================
-   REFRESH SECURITY TIP
-========================================================= */
-
-async function refreshTip(){
-
-    try{
-
-        const response =
-            await fetch("/tip");
-
-        const data =
-            await response.json();
-
-        document.getElementById(
-            "securityTip"
-        ).innerHTML =
-            data.tip;
-
-    }
-
-    catch(error){
-
-        console.error(error);
-
-    }
-
-}
 
 
 /* =========================================================

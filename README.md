@@ -1,343 +1,253 @@
-# Smart Password Strength Checker for Cyber Security Awareness
+# 🔐 Smart Password Strength Checker for Cyber Security Awareness
 
-## CSC662 – Computer Security
+<p align="center">
 
-### Universiti Teknologi MARA (UiTM)
-Faculty of Computer and Mathematical Sciences
+![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge\&logo=python\&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-Web_App-000000?style=for-the-badge\&logo=flask)
+![HTML](https://img.shields.io/badge/HTML-E34F26?style=for-the-badge\&logo=html5\&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge\&logo=css3)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge\&logo=javascript\&logoColor=black)
 
-**Course:** CSC662 – Computer Security  
-**Lecturer:** Mohd Taufik Mishan  
-**Project Type:** Cyber Security Awareness Project  
-**Project Title:** Smart Password Strength Checker for Cyber Security Awareness
+</p>
 
-# 1. Project Overview
+<p align="center">
 
-The Smart Password Strength Checker is a web-based cyber security awareness system developed to educate users about the importance of strong passwords in protecting personal and organizational information.
+# 🌐 Live Demo
 
-Many users continue to use weak, predictable, or reused passwords, making them vulnerable to cyber attacks such as brute force attacks, dictionary attacks, credential stuffing, and unauthorized access.
+### 👉 https://passwordchecker-d6x4.onrender.com/
 
-This project helps users evaluate the strength of their passwords, understand potential security risks, and learn best practices for password management.
-
-The project also supports cyber security awareness by providing educational messages, password recommendations, and secure password generation features.
-
-
-# 2. Project Objectives
-
-## Main Objective
-
-To create awareness about the importance of strong passwords in cyber security.
-
-## Specific Objectives
-
-- To identify common weak password practices among users.
-- To explain the risks of password attacks and unauthorized access.
-- To promote good password management practices.
-- To develop and demonstrate a web-based password strength checker.
-
-
-# 3. Key Features
-
-## Password Strength Analysis
-
-Evaluates password strength based on:
-
-- Password length
-- Uppercase letters
-- Lowercase letters
-- Numbers
-- Special characters
-- Common password detection
-
-
-## Password Security Score
-
-Provides a score between:
-
-- 0 – 39 : Weak
-- 40 – 74 : Medium
-- 75 – 100 : Strong
-
-
-
-## Risk Analysis
-
-Identifies possible cyber threats including:
-
-- Dictionary Attacks
-- Brute Force Attacks
-- Credential Stuffing
-- Unauthorized Access
-
-
-## Crack Time Estimation
-
-Provides an estimated time required for attackers to crack the password.
-
-Examples:
-
-- Instantly
-- Few Minutes
-- Several Days
-- Several Months
-- Hundreds of Years
-
-
-
-## Password Improvement Suggestions
-
-Provides recommendations such as:
-
-- Increase password length
-- Add uppercase letters
-- Add lowercase letters
-- Include numbers
-- Include special characters
-- Avoid common passwords
-
-
-
-## Secure Password Generator
-
-Generates strong and random passwords automatically.
-
-
-
-## Cyber Security Awareness Tips
-
-Displays cyber security awareness messages such as:
-
-- Avoid password reuse
-- Enable Multi-Factor Authentication (MFA)
-- Use password managers
-- Avoid phishing attacks
-- Protect personal information
-
-
-
-# 4. Technologies Used
-
-| Technology | Purpose |
-|------------|----------|
-| Python | Backend Development |
-| Flask | Web Application Framework |
-| HTML | Web Page Structure |
-| CSS | User Interface Design |
-| JavaScript | Client-Side Interaction |
-| VS Code | Development Environment |
-| Google Chrome | Testing Platform |
+</p>
 
 ---
 
-# 5. System Requirements
+## 📖 About
 
-## Software Requirements
+The **Smart Password Strength Checker** is a web-based cyber security awareness application developed for the **CSC662 – Computer Security** course at **Universiti Teknologi MARA (UiTM)**.
 
-- Python 3.10 or higher
-- Web Browser (Chrome, Edge, Firefox)
-- Internet Connection (Optional)
+The system educates users about creating secure passwords by analyzing password strength, identifying security risks, estimating crack time, and providing practical recommendations to improve password security.
 
 ---
 
-# 6. Project Structure
+# 🎯 Objectives
 
-```text
-password_checker_project/
+* Create awareness about password security.
+* Identify weak password practices.
+* Explain common password attacks.
+* Encourage secure password management.
+* Demonstrate a web-based password strength checker.
 
-│
-├── app.py
-├── requirements.txt
-├── README.md
-│
-├── templates/
-│   └── index.html
-│
-├── static/
-│   ├── style.css
-│   └── script.js
-│
-└── screenshots/
+---
+
+# ✨ Features
+
+## 🔍 Password Strength Analysis
+
+* Password Length
+* Uppercase Letters
+* Lowercase Letters
+* Numbers
+* Special Characters
+* Common Password Detection
+
+---
+
+## 📊 Security Score
+
+| Score    | Strength  |
+| -------- | --------- |
+| 0 – 39   | 🔴 Weak   |
+| 40 – 74  | 🟡 Medium |
+| 75 – 100 | 🟢 Strong |
+
+---
+
+## ⚠️ Risk Detection
+
+The system identifies risks such as:
+
+* Dictionary Attacks
+* Brute Force Attacks
+* Credential Stuffing
+* Unauthorized Access
+
+---
+
+## ⏳ Crack Time Estimation
+
+Examples include:
+
+* Instantly
+* Few Minutes
+* Several Days
+* Several Months
+* Hundreds of Years
+
+---
+
+## 💡 Password Suggestions
+
+Recommendations include:
+
+* Increase password length
+* Add uppercase letters
+* Add lowercase letters
+* Include numbers
+* Include special characters
+* Avoid common passwords
+
+---
+
+## 🔐 Secure Password Generator
+
+Generate strong and random passwords instantly.
+
+---
+
+## 🛡️ Cyber Security Tips
+
+Receive security awareness advice including:
+
+* Avoid password reuse
+* Enable Multi-Factor Authentication (MFA)
+* Use Password Managers
+* Beware of Phishing
+* Protect Personal Information
+
+---
+
+# 🚀 Installation
+
+### 1. Clone the repository
+
+```bash
+git clone <repository-url>
 ```
 
-
-# 7. Installation Guide
-
-## Step 1: Download Project
-
-Download or clone the project folder.
-
-
-
-## Step 2: Open Terminal
-
-Navigate to the project folder.
-
-Example:
+### 2. Open the project
 
 ```bash
 cd password_checker_project
 ```
 
-
-## Step 3: Install Required Packages
-
-Install Flask using:
+### 3. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-or
-
-```bash
-pip install flask
-```
-
-
-## Step 4: Run Application
-
-Execute:
+### 4. Run the application
 
 ```bash
 python app.py
 ```
 
+### 5. Open your browser
 
-## Step 5: Open Browser
-
-Open:
-
-```text
+```
 http://127.0.0.1:5000
 ```
 
-The Smart Password Strength Checker will be displayed.
+---
 
+# 📚 User Guide
 
-
-# 8. User Guide
-
-## Password Analysis
+## Analyze Password
 
 1. Enter a password.
 2. Click **Analyze Password**.
 3. View:
 
-- Password Score
-- Password Strength
-- Security Risks
-- Crack Time Estimation
-- Improvement Suggestions
+   * Password Score
+   * Password Strength
+   * Security Risks
+   * Crack Time
+   * Improvement Suggestions
 
+---
 
-
-## Generate Secure Password
+## Generate Password
 
 1. Click **Generate Secure Password**.
-2. A strong random password will be generated.
-3. Use the generated password for online accounts.
+2. Copy the generated password.
+3. Use it for your online accounts.
 
+---
 
+## Security Tips
 
-## Read Security Tips
+Navigate to the **Cyber Security Awareness** section and click **New Tip** to learn password safety best practices.
 
-1. Navigate to the Security Awareness section.
-2. Click **New Tip**.
-3. Read cyber security recommendations.
+---
 
+# 📊 Password Evaluation Criteria
 
-# 9. Password Evaluation Criteria
+| Criteria            | Points |
+| ------------------- | ------ |
+| Length ≥ 12         | 25     |
+| Uppercase           | 15     |
+| Lowercase           | 15     |
+| Numbers             | 15     |
+| Special Characters  | 15     |
+| Not Common Password | 15     |
 
-The system evaluates passwords using the following criteria:
+### Maximum Score
 
-| Criteria | Points |
-|----------|----------|
-| Length ≥ 12 Characters | 25 |
-| Uppercase Letters | 15 |
-| Lowercase Letters | 15 |
-| Numbers | 15 |
-| Special Characters | 15 |
-| Not Common Password | 15 |
-
-Maximum Score:
-
-```text
+```
 100 Points
 ```
 
+---
 
-# 10. Example Password Ratings
+# 📝 Example Password Ratings
 
-| Password | Result |
-|-----------|---------|
-| 123456 | Weak |
-| password123 | Weak |
-| Password123 | Medium |
-| Password123! | Strong |
-| G7@rM!29xQ#T | Strong |
+| Password     | Rating    |
+| ------------ | --------- |
+| 123456       | 🔴 Weak   |
+| password123  | 🔴 Weak   |
+| Password123  | 🟡 Medium |
+| Password123! | 🟢 Strong |
+| G7@rM!29xQ#T | 🟢 Strong |
 
+---
 
+# 🔮 Future Improvements
 
-# 11. Cyber Security Awareness Messages
+* Password Entropy Calculation
+* Password Breach Detection
+* Database Integration
+* User Authentication
+* Password History
+* Advanced Analytics
+* Dark Mode
+* Cyber Security Quiz
 
-The project promotes the following cyber security practices:
+---
 
-- Use unique passwords for different accounts.
-- Avoid using personal information in passwords.
-- Enable Multi-Factor Authentication (MFA).
-- Update passwords regularly.
-- Never share passwords with others.
-- Use password managers.
-- Be cautious of phishing attacks.
+# 👩‍💻 Authors
 
+**CSC662 – Computer Security**
 
+**Cyber Security Awareness Project**
 
-# 12. Future Improvements
-
-Future enhancements may include:
-
-- Password Entropy Calculation
-- Password Breach Detection
-- Database Integration
-- User Login System
-- Password History Tracking
-- Advanced Security Analytics
-- Dark Mode Interface
-- Cyber Security Quiz Module
-
-
-
-# 13. Conclusion
-
-The Smart Password Strength Checker was developed as a cyber security awareness project to educate users about password security and encourage the adoption of stronger password practices.
-
-The system demonstrates how password strength can be evaluated using simple security criteria while helping users understand the risks associated with weak passwords and poor password management.
-
-
-
-# 14. Authors
-
-CSC662 – Computer Security
-
-Cyber Security Awareness Project
-
-Universiti Teknologi MARA (UiTM)
+**Universiti Teknologi MARA (UiTM)**
 
 Faculty of Computer and Mathematical Sciences
 
-Project Title:
+### Group Members
 
-**Smart Password Strength Checker for Cyber Security Awareness**
+* **Nur Fara'Ain Aliyah binti Imran** (2024211146)
+* **Nur Syakilla Asyiqin binti Hasan** (2024425838)
 
-Group Members:
+---
 
-- NUR FARA'AIN ALIYAH BINTI IMRAN (2024211146)
-- NUR SYAKILLA ASYIQIN BINTI HASAN (2024425838)
+# 🙏 Acknowledgement
 
-# 15. Acknowledgement
+The authors would like to express their sincere appreciation to **Mohd Taufik Mishan** for his guidance, support, and valuable knowledge throughout the completion of this project.
 
-The authors would like to express their sincere appreciation to:
+---
 
-**Mohd Taufik Mishan** for his guidance, support, and valuable knowledge throughout the completion of this project.
+# 📜 License
 
+This project was developed for academic purposes under the CSC662 – Computer Security course at Universiti Teknologi MARA (UiTM).
 
 © 2026 CSC662 Computer Security Project
